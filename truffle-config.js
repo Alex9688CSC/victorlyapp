@@ -1,5 +1,5 @@
 const HDWalletProvider = require('@truffle/hdwallet-provider');
-const mnemonic = '';
+const mnemonic = 'derive harbor pave mandate tomorrow file segment shoot drip stone two six';
 
 /**
  * Use this file to configure your truffle project. It's seeded with some
@@ -21,9 +21,9 @@ const mnemonic = '';
  *
  */
 
-// const HDWalletProvider = require('@truffle/hdwallet-provider');
-// const infuraKey = "fj4jll3k.....";
-//
+//const HDWalletProvider = require('@truffle/hdwallet-provider');
+//const infuraKey = "1da3e22bc60a40a3914d04f78bc836dd";
+
 // const fs = require('fs');
 // const mnemonic = fs.readFileSync(".secret").toString().trim();
 
@@ -65,7 +65,7 @@ module.exports = {
     rinkeby: {
       provider: () => new HDWalletProvider(
         mnemonic, 
-        'rinkeby url',
+        'https://rinkeby.infura.io/v3/1da3e22bc60a40a3914d04f78bc836dd',
         0,
         1
       ),
