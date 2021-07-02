@@ -10,8 +10,7 @@ function App() {
       const { nft } = await getBlockchain();
       const tokenURI = await nft.tokenURI(0);
       const { data } = await axios.get(tokenURI);
-      console.log(data.result);
-      setTokenInfo(data.result);
+      setTokenInfo(data);
     };
     init();
   }, []);
@@ -25,9 +24,9 @@ function App() {
 
       <div className='row'>
         <div className='col-sm-12'>
-          <h1 className='text-center'>{tokenInfo.name}</h1>
+          <h1 className='text-center'>{"Tocken Name: "+ tokenInfo.name}</h1>
           <div className="jumbotron">
-            <p className="lead text-center">{tokenInfo.description}</p>
+            <p className="lead text-center">{"Tocken Discription: "+ tokenInfo.description}</p>
             <img src={tokenInfo.image} className="img-fluid" />
           </div>
         </div>
