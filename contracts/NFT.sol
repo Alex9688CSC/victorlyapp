@@ -7,12 +7,13 @@ contract NFT is ERC721 {
   uint public nextTokenId;
   address public admin;
 
-  constructor() ERC721('My NFT', 'NFT') {
+  constructor() ERC721('My Players NFT', 'PLAYERSNFT') {
     admin = msg.sender;
   }
 
   function mint(address to) external {
     require(msg.sender == admin, 'only admin');
+    //first token
     _safeMint(to, nextTokenId);
     nextTokenId++;
   }
