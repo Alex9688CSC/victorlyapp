@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
 import '@openzeppelin/contracts/token/ERC721/ERC721.sol';
@@ -17,7 +18,8 @@ contract NFT is ERC721 {
   }
 
   function _baseURI() internal view override returns (string memory) {
-    return 'https://victorlyapp.herokuapp.com/';
+    return 'https://victorapi.herokuapp.com/api/token/';
   }
+  
 
 }
