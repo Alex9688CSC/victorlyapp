@@ -1,21 +1,21 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
+import "@openzeppelin/contracts/access/Ownable.sol";
 import '@openzeppelin/contracts/token/ERC721/ERC721.sol';
 
-contract NFT is ERC721 {
-  uint public nextTokenId;
+contract NFT is Ownable, ERC721 {
+  uint public TokenId;
   address public admin;
 
   constructor() ERC721('My Players NFT', 'PLAYERSNFT') {
     admin = msg.sender;
   }
 
-  function mint(address to) external {
+  function mint(address to, uint tokenid) external {
     require(msg.sender == admin, 'only admin');
-    //first token
-    _safeMint(to, nextTokenId);
-    nextTokenId++;
+    _safeMint(to, tokenid);
+    TokenId++;
   }
 
   function _baseURI() internal view override returns (string memory) {
