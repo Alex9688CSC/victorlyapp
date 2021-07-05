@@ -16,7 +16,6 @@ export default function Collection({PlayerName}) {
         const init = async () => {
         //   const { nft } = await getBlockchain();
         //   const tokenURI = await nft.tokenURI(tokenID);
-        //const collectionURI = 'https://victorapi.herokuapp.com/api/'+ PlayerNAME +'/0';
           console.log(collectionURI);
           const { data } = await axios.get(collectionURI);
           setCollectionInfo(data);

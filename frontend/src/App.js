@@ -1,15 +1,24 @@
 import React from 'react'
-import Nav from './components/nav';
-import Footer from './components/footer';
-import Body from './components/body';
+import Nav from './components/Nav';
+import Footer from './components/Footer';
+import Body from './components/Body';
 
 
 export default function App() {
     return (
         <div>
-            <Nav />
-            <Body />
-            <Footer />
+            <div class="row"> 
+                <Nav />
+            </div>
+            
+            <div class="row"> 
+                <Body />
+                <Footer />
+            </div>
+
+            
+
+            
         </div>
     )
 }

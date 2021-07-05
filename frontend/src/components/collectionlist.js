@@ -1,14 +1,14 @@
 import React from 'react'
 import Collection from './Collection';
-export default function collectionlist() {
+export default function Collectionlist() {
     return (
             <div class="container vertical-scrollable">  
                 <br></br>
-                <div class="col-6">
+                <div>
                     <Collection PlayerName= {"playerone"}/>
                 </div>
                 <br></br>
-                <div class="col-6">
+                <div >
                     <Collection PlayerName= {"playertwo"}/>
                 </div>
                 <br></br>

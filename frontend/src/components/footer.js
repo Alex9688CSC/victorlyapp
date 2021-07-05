@@ -1,10 +1,7 @@
 import React from 'react'
 
-export default function footer() {
+export default function Footer() {
     return (
-        
-
-
         <div class="footer footer-full-width" id="footer">
             <div class="container">
                 <div class="row">
