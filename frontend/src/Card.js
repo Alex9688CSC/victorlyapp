@@ -29,6 +29,7 @@ function Card({tokenId}) {
         <div class="my-3 p-3">
           <h2 class="display-5">{"Tocken Name: "+ tokenInfo.name}</h2>
           <p class="lead">{"Tocken Discription: "+ tokenInfo.description}</p>
+          <p class="lead">{"Birthday: "+ tokenInfo.birthday}</p>
           <img src={tokenInfo.image} className="img-fluid" />
         </div>
       </div>
