@@ -16,7 +16,7 @@ export default function Collection({PlayerName}) {
         const init = async () => {
         //   const { nft } = await getBlockchain();
         //   const tokenURI = await nft.tokenURI(tokenID);
-          console.log(collectionURI);
+          //console.log(collectionURI);
           const { data } = await axios.get(collectionURI);
           setCollectionInfo(data);
         };
