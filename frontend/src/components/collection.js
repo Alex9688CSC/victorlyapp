@@ -9,7 +9,7 @@ export default function Collection({PlayerName}) {
     const [collectionInfo, setCollectionInfo] = useState(undefined);
     
     const  PlayerNAME  = PlayerName
-    const collectionURI = 'https://victorapi.herokuapp.com/api/'+PlayerNAME +'/0';
+    const collectionURI = 'https://victorapi.herokuapp.com/api/collections/'+ PlayerNAME ;
     
 
     useEffect(() => {
@@ -28,9 +28,9 @@ export default function Collection({PlayerName}) {
 
     return (
         <div class="card">
-            <img src={collectionInfo.image} alt="loading" className="img-fluid"/>
+            <img src={collectionInfo.logoimg} alt="loading" className="img-fluid"/>
             <div class="card-body">
-                <h5 class="card-title">{"Collection Name: "+ collectionInfo.name}</h5>
+                <h5 class="card-title">{"Collection Name: "+ collectionInfo.collection_name}</h5>
                 <p class="card-text">{"Collection Info: "+ collectionInfo.description}</p>
                 <a href="#" class="btn btn-primary">View Collection</a>
             </div>
