@@ -6,8 +6,8 @@ export default function Cardlist() {
             <div class="row">
                 <NFTcard PlayerName= {"playerone"} TokenId= {"0"}/>
                 <NFTcard PlayerName= {"playerone"} TokenId= {"1"}/>
-                <NFTcard PlayerName= {"playerone"} TokenId= {"0"}/>
-                <NFTcard PlayerName= {"playerone"} TokenId= {"1"}/>
+                <NFTcard PlayerName= {"playerone"} TokenId= {"2"}/>
+                <NFTcard PlayerName= {"playerone"} TokenId= {"3"}/>
             </div>
         </div>
     )

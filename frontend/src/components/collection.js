@@ -2,15 +2,16 @@
 import React, { useState, useEffect } from 'react';
 // import getBlockchain from './ethereum.js';
 import axios from 'axios';
-
+import { useCollectionUpdate} from './CollectionContext';
 
 
 export default function Collection({PlayerName}) {
     const [collectionInfo, setCollectionInfo] = useState(undefined);
-    
     const  PlayerNAME  = PlayerName
     const collectionURI = 'https://victorapi.herokuapp.com/api/collections/'+ PlayerNAME ;
     
+
+    const updateCollection= useCollectionUpdate();
 
     useEffect(() => {
         const init = async () => {
