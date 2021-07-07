@@ -1,23 +1,28 @@
-import React from 'react'
+import React, { useState, useContext } from 'react'
 import Collectionlist from './Collectionlist';
 import Cardlist from './Cardlist';
 import Profile from './profile';
-import {CollectionProvider} from  './CollectionContext';
+import { PlayerContext } from './PlayerContext';
+export default function Body() {
+    const [player, setPlayer] = useState('playerone');
 
-export default function body() {
+
     return (
-        // <CollectionProvider>
-            <div class="container-fluid">
-                <div class="row content">
-                    <div class="col-sm-3 ">
+        <div class="container-fluid">
+            <div class="row content">
+                <div class="col-sm-3 ">
+                    <PlayerContext.Provider value= {{player, setPlayer}}>
                         <Collectionlist />
-                    </div>
-                    <div class="col-md-8">
+                    </PlayerContext.Provider>
+                </div>
+                <div class="col-md-8">
+                    <PlayerContext.Provider value= {{player, setPlayer}}>
                         <Profile />
                         <Cardlist />
-                    </div>
+                    </PlayerContext.Provider>
+                    
                 </div>
             </div>
-        // </CollectionProvider>
+        </div>
     )
 }

@@ -27,7 +27,7 @@ export function CollectionProvider({childern}) {
     return (
         <CollectionContext.Provider value= {selectedCol}>
             <CollectionUpdateContext.Provider value= {updateCollection}>
-            {childern}
+                {childern}
             </CollectionUpdateContext.Provider>
         </CollectionContext.Provider>
     )

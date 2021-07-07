@@ -1,26 +1,25 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
-import { useCollection, useConllection } from './CollectionContext';
-
+import { PlayerContext } from './PlayerContext';
 
 export default function Profile() {
-    const selectedCollection= useConllection();
     const [collectionInfo, setCollectionInfo] = useState(undefined);
-    const  PlayerNAME  = 'playerone'
+    
+    const {player, setPlayer} = useContext(PlayerContext);
+    const  PlayerNAME  = player;
+
     const collectionURI = 'https://victorapi.herokuapp.com/api/collections/'+ PlayerNAME ;
     
+    //const collection = useContext(PlayerContext);
 
 
     useEffect(() => {
         const init = async () => {
-        //   const { nft } = await getBlockchain();
-        //   const tokenURI = await nft.tokenURI(tokenID);
-          //console.log(collectionURI);
           const { data } = await axios.get(collectionURI);
           setCollectionInfo(data);
         };
         init();
-      },[]);
+      },[collectionURI]);
       if(typeof collectionInfo === 'undefined') {
         return 'collectionInfo undefined';
       }

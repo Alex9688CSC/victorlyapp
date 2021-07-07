@@ -16,7 +16,7 @@ export default function NFTcard({PlayerName, TokenId}) {
           setCardInfo(data);
         };
         init();
-      },[]);
+      },[collectionURI, PlayerName]);
       if(typeof cardInfo === 'undefined') {
         return 'cardInfo undefined';
       }

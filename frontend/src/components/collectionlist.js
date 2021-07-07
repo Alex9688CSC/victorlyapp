@@ -3,8 +3,15 @@ import Collection from './Collection';
 export default function Collectionlist() {
     return (
         <div class="container mt-5 ">
-            <div class="container vertical-scrollable ">  
-            
+            <br></br>
+            <div class="card border">
+                <div class="card-body">
+                    <h1 class="text-center"> NFT Collections </h1>
+
+                </div>
+            </div>
+            <br></br>
+            <div class="container vertical-scrollable" style= {{height: "1200px", overflow: "scroll"}}>  
                 <br></br>
                 <div>
                     <Collection PlayerName= {"playerone"}/>
