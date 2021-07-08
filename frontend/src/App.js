@@ -13,11 +13,11 @@ export default function App() {
             <div class="row"> 
                 <Nav />
             </div>
-            
             <div class="row"> 
                 <Body />
                 <Footer />
             </div>
+
 
             
 

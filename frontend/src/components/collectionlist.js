@@ -1,6 +1,32 @@
-import React from 'react'
-import Collection from './Collection';
+import React, {useState, useEffect} from 'react'
+import Collection from './collection';
+import axios from 'axios';
+
+
 export default function Collectionlist() {
+    const [collection, setCollection] = useState([])
+    const collectionsURI= 'https://victorapi.herokuapp.com/api/collections';
+
+    useEffect(() => {
+        const init = async () => {
+          const { data } = await axios.get(collectionsURI);
+          setCollection(data);
+        };
+        init();
+    },[collectionsURI]);
+    
+    
+    //loop through the object to create the list
+    const collectionlist = Object.keys(collection).map(key => {
+            return <div>
+                <br></br>
+                <Collection PlayerName= {key}/>
+            </div>
+            
+        }
+    )
+
+
     return (
         <div class="container mt-5 ">
             <br></br>
@@ -12,7 +38,10 @@ export default function Collectionlist() {
             </div>
             <br></br>
             <div class="container vertical-scrollable" style= {{height: "1200px", overflow: "scroll"}}>  
+                {collectionlist}
                 <br></br>
+                <Collection PlayerName= {"playerone"}/>
+                {/* <br></br>
                 <div>
                     <Collection PlayerName= {"playerone"}/>
                 </div>
@@ -27,38 +56,8 @@ export default function Collectionlist() {
                 <br></br>
                 <div >
                     <Collection PlayerName= {"playertwo"}/>
-                </div>
+                </div> */}
             </div>
         </div>
-
-        // <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white" style={{width: "380px"}}>
-        //     <div class="list-group list-group-flush border-bottom scrollarea">
-        //     card one
-        //     <a href="#" class="list-group-item list-group-item-action active py-3 lh-tight" aria-current="true">
-        //         <div class="d-flex w-100 align-items-center justify-content-between">
-        //         <strong class="mb-1">List group item heading</strong>
-        //         <small>Wed</small>
-        //         </div>
-        //         <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
-        //     </a>
-        //     card two
-        //     <a href="#" class="list-group-item list-group-item-action py-3 lh-tight">
-        //         <div class="d-flex w-100 align-items-center justify-content-between">
-        //         <strong class="mb-1">List group item heading</strong>
-        //         <small class="text-muted">Tues</small>
-        //         </div>
-        //         <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
-        //     </a>
-        
-        //     </div>
-        // </div>
-
-
-
-
-
-
-
-        
     )
 }
