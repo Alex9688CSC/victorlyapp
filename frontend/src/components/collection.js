@@ -8,7 +8,7 @@ export default function Collection({PlayerName}) {
     const  PlayerNAME  = PlayerName
     const collectionURI = 'https://victorapi.herokuapp.com/api/collections/'+ PlayerNAME ;
     
-    const {player, setPlayer} = useContext(PlayerContext);
+    const {setPlayer} = useContext(PlayerContext);
     
 
     useEffect(() => {
