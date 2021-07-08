@@ -30,7 +30,7 @@ export default function Collectionlist() {
     return (
         <div class="container mt-5 ">
             <br></br>
-            <div class="card border">
+            <div class="card">
                 <div class="card-body">
                     <h1 class="text-center"> NFT Collections </h1>
 
@@ -58,6 +58,7 @@ export default function Collectionlist() {
                     <Collection PlayerName= {"playertwo"}/>
                 </div> */}
             </div>
+            <br></br>
         </div>
     )
 }

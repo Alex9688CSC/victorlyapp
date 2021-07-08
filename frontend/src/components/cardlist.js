@@ -36,6 +36,7 @@ export default function Cardlist() {
                 <NFTcard PlayerName= {player} TokenId= {"2"}/>
                 <NFTcard PlayerName= {player} TokenId= {"3"}/> */}
             </div>
+            <br></br>
         </div>
     )
 }
