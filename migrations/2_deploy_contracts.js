@@ -19,5 +19,5 @@ module.exports = async function (deployer, _network, accounts) {
   const playertwo = await PLAYERTWO.deployed();
   await playertwo.mint(accounts[0], 0);
   await playertwo.mint(accounts[0], 1);
-
+//
 };
