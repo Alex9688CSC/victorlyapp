@@ -1,15 +1,13 @@
 import React from 'react'
+import logo from './../images/VictorlyLogo1.png'; // with import
 
 export default function Nav() {
     return (
-
         <header class="header header--logout" id="site-header">
-            <a href="02-ProfilePage.html" class="logo">
-                <div class="img-wrap">
-                    {/* <img src="img/logo.png" alt="Olympus"> */}
-                </div>
-            </a>
-
+            <div class="ml-5"> 
+                <img src={logo} style= {{width: "120px"}} alt= "loading" />
+            </div>
+                
             <div class="header-content-wrapper">
 
                 <div class="form--login-logout">
