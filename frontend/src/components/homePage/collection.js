@@ -1,7 +1,8 @@
 
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
-import { PlayerContext } from './PlayerContext';
+import { PlayerContext } from '../PlayerContext';
+import {Link} from 'react-router-dom'
 
 export default function Collection({PlayerName}) {
     const [collectionInfo, setCollectionInfo] = useState(undefined);
@@ -28,7 +29,10 @@ export default function Collection({PlayerName}) {
             <div class="card-body">
                 <h5 class="card-title">{"Collection Name: "+ collectionInfo.collection_name}</h5>
                 <p class="card-text">{"Collection Info: "+ collectionInfo.description}</p>
-                <button class = "btn btn-secondary btn-md-2" onClick= {() => setPlayer(PlayerNAME)}> View Collection</button>
+
+                <Link to= "/collectionPage">
+                  <button class = "btn btn-secondary btn-md-2" onClick= {() => setPlayer(PlayerNAME)}> View Collection</button>
+                </Link>
             </div>
         </div>
     )

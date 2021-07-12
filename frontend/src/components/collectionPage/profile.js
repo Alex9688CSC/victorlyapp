@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
-import { PlayerContext } from './PlayerContext';
+import { PlayerContext } from '../PlayerContext';
 
 export default function Profile() {
     const [collectionInfo, setCollectionInfo] = useState(undefined);

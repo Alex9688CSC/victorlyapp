@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react'
 import NFTcard from './NFTcard';
-import { PlayerContext } from './PlayerContext';
+import { PlayerContext } from '../PlayerContext';
 import axios from 'axios';
 
 export default function Cardlist() {
