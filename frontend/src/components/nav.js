@@ -1,5 +1,6 @@
 import React from 'react'
 import logo from './../images/VictorlyLogo1.png'; // with import
+import {Link} from 'react-router-dom'
 
 export default function Nav() {
     return (
@@ -12,6 +13,9 @@ export default function Nav() {
 
                 <div class="form--login-logout">
                     <form class="form-inline">
+                        <Link to= "/">
+                            <button class="btn btn-primary btn-md-2">NFT HomePage</button>
+                        </Link>
                         <button class="btn btn-primary btn-md-2">賽事</button>
                         <button class="btn btn-primary btn-md-2">選手</button>
                         <button class="btn btn-primary btn-md-2">登入</button>

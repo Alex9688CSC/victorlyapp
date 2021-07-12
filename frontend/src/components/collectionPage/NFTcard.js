@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import {Link} from 'react-router-dom'
 
 export default function NFTcard({PlayerName, TokenId}) {
     const [cardInfo, setCardInfo] = useState(undefined);
@@ -29,7 +30,10 @@ export default function NFTcard({PlayerName, TokenId}) {
                     <h2 class="display-5">{"Card Name: "+ cardInfo.name}</h2>
                     <p class="lead">{"Card Discription: "+ cardInfo.description}</p>
                     <p class="lead">{"Date: "+ cardInfo.birthday}</p>
-                    <a href="#" class="btn mr-2"><i class="fas fa-link"></i> View on OpenSea</a>
+                    <Link to= "/itemPage">
+                    <a href="#" class="btn mr-2"><i class="fas fa-link"></i> View More</a>
+                    </Link>
+                    
                 </div>
             </div>
         </div>
