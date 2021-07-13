@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react'
 import {Route, BrowserRouter as Router, Switch} from 'react-router-dom'
 import Nav from './components/nav';
 import Footer from './components/footer';
-
+import ScrollToTop from './ScrollToTop';
 //Home Page components
 import HomeProfile from './components/homePage/homeProfile';
 import Collectionlist from './components/homePage/collectionlist';
@@ -14,6 +14,7 @@ import ItemPage from './components/itemPage/itempage';
 import CollectionProfile from './components/collectionPage/collectionProfile';
 
 
+
 import { PlayerContext } from './components/PlayerContext';
 export const AppContext =React.createContext();
 
@@ -23,9 +24,8 @@ export default function App() {
 
     return (
         <Router>
-            
+            <ScrollToTop />
             <Nav />
-
             <Switch> 
                 <Route path= "/collectionPage">
                     <PlayerContext.Provider value= {{player, setPlayer}}>
