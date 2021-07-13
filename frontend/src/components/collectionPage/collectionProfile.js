@@ -7,7 +7,7 @@ export default function collectionProfile() {
         <article class="hentry blog-post single-post single-post-v3">
             <a href="#" class="post-category bg-primary">OLYMPUS NEWS</a>
         
-            <h1 class="post-title">We optimized the Olympus App for better navigation</h1>
+            <h1 class="post-title">運動員介紹</h1>
         
             <div class="author-date">
                 <div class="author-thumb">
@@ -15,7 +15,7 @@ export default function collectionProfile() {
                     {/* <img alt="author" src="img/friend-harmonic7.jpg" class="avatar"> */}
                 </div>
                 by
-                <a class="h6 post__author-name fn" href="#">JACK SCORPIO</a>
+                <a class="h6 post__author-name fn" href="#">Chen Hanyu</a>
                 <div class="post__date">
                     <time class="published" datetime="2017-03-24T18:18">
                         -  12 hours ago

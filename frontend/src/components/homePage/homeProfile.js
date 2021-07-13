@@ -90,8 +90,8 @@ export default function homeProfile() {
                                     <img src={profile} style= {{width: "120px"}} alt= "loading"/>
                                 </a>
                                 <div class="author-content">
-                                    <a href="02-ProfilePage.html" class="h4 author-name">James Spiegel</a>
-                                    <div class="country">San Francisco, CA</div>
+                                    <a href="02-ProfilePage.html" class="h4 author-name">Victor.ly</a>
+                                    <div class="country">NFT Collections</div>
                                 </div>
                             </div>
                         </div>
