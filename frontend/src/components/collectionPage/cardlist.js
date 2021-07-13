@@ -6,7 +6,7 @@ import axios from 'axios';
 export default function Cardlist() {
     const {player} = useContext(PlayerContext);
     const [playerInfo, setplayerInfo] = useState([]);
-
+    //
     const playerURI= 'https://victorapi.herokuapp.com/api/' + player;
 
     useEffect(() => {
