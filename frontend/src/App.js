@@ -2,10 +2,16 @@ import React, { useState, useContext } from 'react'
 import {Route, BrowserRouter as Router, Switch} from 'react-router-dom'
 import Nav from './components/nav';
 import Footer from './components/footer';
+
+//Home Page components
+import HomeProfile from './components/homePage/homeProfile';
 import Collectionlist from './components/homePage/collectionlist';
+
+//Collection page components
 import Cardlist from './components/collectionPage/cardlist';
 import Profile from './components/collectionPage/profile';
 import ItemPage from './components/itemPage/itempage';
+import CollectionProfile from './components/collectionPage/collectionProfile';
 
 
 import { PlayerContext } from './components/PlayerContext';
@@ -23,8 +29,19 @@ export default function App() {
             <Switch> 
                 <Route path= "/collectionPage">
                     <PlayerContext.Provider value= {{player, setPlayer}}>
-                        <Profile />
-                        <Cardlist />
+                        <div class="container">
+                            <div class="row mt50">
+                                <div class="col col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12">
+                                    <br></br>
+                                    <div class="ui-block mb60 mt-3">
+                                        <CollectionProfile/>
+                                    </div>
+                                </div>
+                                <div class="col col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
+                                    <Cardlist />
+                                </div>
+                             </div>
+                        </div>
                     </PlayerContext.Provider>
                 </Route>  
 
@@ -36,6 +53,7 @@ export default function App() {
 
                 <Route path= "/">
                     <PlayerContext.Provider value= {{player, setPlayer}}>
+                        <HomeProfile />
                         <Collectionlist />
                     </PlayerContext.Provider>
                 </Route>

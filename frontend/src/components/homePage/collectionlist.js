@@ -28,37 +28,27 @@ export default function Collectionlist() {
 
 
     return (
-        <div class="container mt-5 ">
-            <br></br>
-            <div class="card">
-                <div class="card-body">
-                    <h1 class="text-center"> NFT Collections </h1>
-
+        
+        <div class="container">
+            <div class="row">
+                <div class="col col-xl-6 col-lg-12 col-md-12 col-sm-12 col-12">
+                    {/* <div class="ui-block"> */}
+                        {collectionlist}
+                        <br></br>
+                    {/* </div> */}
                 </div>
             </div>
-            <br></br>
-            <div class="container vertical-scrollable" style= {{height: "1200px", overflow: "scroll"}}>  
-                {collectionlist}
-                <br></br>
-                <Collection PlayerName= {"playerone"}/>
-                {/* <br></br>
-                <div>
-                    <Collection PlayerName= {"playerone"}/>
-                </div>
-                <br></br>
-                <div >
-                    <Collection PlayerName= {"playertwo"}/>
-                </div>
-                <br></br>
-                <div>
-                    <Collection PlayerName= {"playerone"}/>
-                </div>
-                <br></br>
-                <div >
-                    <Collection PlayerName= {"playertwo"}/>
-                </div> */}
-            </div>
-            <br></br>
+            
         </div>
+
+        // <div class="container">
+        //     <br></br>
+        //     <div class="container vertical-scrollable" style= {{height: "1200px", overflow: "scroll"}}>  
+        //         {collectionlist}
+        //         <br></br>
+        //         <Collection PlayerName= {"playerone"}/>
+        //     </div>
+        //     <br></br>
+        // </div>
     )
 }

@@ -25,11 +25,16 @@ export default function Collection({PlayerName}) {
 
     return (
         <div class="card">
-            <img src={collectionInfo.logoimg} alt="loading" className="img-fluid"/>
+            <img src={collectionInfo.logoimg} style= {{height: "200px"}} alt="loading" className="img-fluid"/>
             <div class="card-body">
-                <h5 class="card-title">{"Collection Name: "+ collectionInfo.collection_name}</h5>
+                <h2 class="post-title">{"Collection Name: "+ collectionInfo.collection_name}</h2>
                 <p class="card-text">{"Collection Info: "+ collectionInfo.description}</p>
-
+                <p>Lorem ipsum dolor sit amet, consectadipisicing elit, sed do eiusmod por incidid ut labore et
+                  dolore magna aliqua. Ut enim ad minim veniam, quis nostrud lorem exercitation ullamco laboris
+                  nisi ut aliquip ex ea commodo consequat. Duis en aute irure dolor in reprehenderit in voluptate
+                  velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                  sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
                 <Link to= "/collectionPage">
                   <button class = "btn btn-secondary btn-md-2" onClick= {() => setPlayer(PlayerNAME)}> View Collection</button>
                 </Link>

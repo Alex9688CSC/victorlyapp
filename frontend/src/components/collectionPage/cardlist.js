@@ -28,15 +28,21 @@ export default function Cardlist() {
     )
 
     return (
-        <div class="container mx-auto mt-4">
-            <div class="row">
-                {cardlist}
-                {/* <NFTcard PlayerName= {player} TokenId= {"0"}/>
-                <NFTcard PlayerName= {player} TokenId= {"1"}/>
-                <NFTcard PlayerName= {player} TokenId= {"2"}/>
-                <NFTcard PlayerName= {player} TokenId= {"3"}/> */}
+        <div>
+            <br></br>
+            <br></br>
+            <div class="crumina-module crumina-heading with-title-decoration">
+                <h5 class="heading-title">Featured NFT Cards</h5>
             </div>
+            {cardlist}
             <br></br>
         </div>
+
+        // <div class="container mx-auto mt-4">
+        //     <div class="row">
+        //         {cardlist}
+        //     </div>
+        //     <br></br>
+        // </div>
     )
 }
