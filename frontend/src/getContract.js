@@ -1,26 +1,20 @@
 import { ethers, Contract } from 'ethers';
-import NFT from './contracts/NFT.json';
 
-const getContract = () =>
-    new Promise((resolve, reject) => {
-        window.addEventListener('load', async () => {
-            if(window.ethereum) {
-                await window.ethereum.enable();
-
-                const provider = new ethers.providers.Web3Provider(window.ethereum);
-                console.log(provider);
-                const signer = provider.getSigner();
-
-                const nft = new Contract(
-                NFT.networks[window.ethereum.networkVersion].address,
-                NFT.abi,
-                signer
-                );
-
-                resolve({nft});
-            }
-            resolve({nft: undefined});
-        });
-    });
-
-export default getContract;
+export default async function getContract(PlayerNAME) {
+    console.log (PlayerNAME);
+    if(window.ethereum) { 
+        // connect ethers.js with metamask https://stackoverflow.com/questions/60785630/how-to-connect-ethers-js-with-metamask
+        await window.ethereum.enable(); 
+        const provider = new ethers.providers.Web3Provider(window.ethereum); 
+        const signer = provider.getSigner(); 
+        // end
+        const player= await import (`./contracts/${PlayerNAME}.json`);
+        const playernft = new Contract(
+          player.networks[window.ethereum.networkVersion].address,
+          player.abi,
+          signer
+        );
+        console.log (playernft.resolvedAddress);
+        return ({playernft})
+    }
+}
