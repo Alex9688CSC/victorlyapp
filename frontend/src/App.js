@@ -20,6 +20,7 @@ export const AppContext =React.createContext();
 export default function App() {
     const [player, setPlayer] = useState('playerone');
 
+    const [tokenId, setTokenId] = useState('0')
 
     return (
         <Router>
@@ -27,7 +28,7 @@ export default function App() {
             <Nav />
             <Switch> 
                 <Route path= "/collectionPage">
-                    <PlayerContext.Provider value= {{player, setPlayer}}>
+                    <PlayerContext.Provider value= {{player, setPlayer, tokenId, setTokenId}}>
                         <div class="container">
                             <div class="row mt50">
                                 <div class="col col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12">
@@ -45,7 +46,7 @@ export default function App() {
                 </Route>  
 
                 <Route path= "/itemPage">
-                    <PlayerContext.Provider>
+                    <PlayerContext.Provider value= {{player, tokenId}}>
                         <ItemPage />
                     </PlayerContext.Provider>
                 </Route>

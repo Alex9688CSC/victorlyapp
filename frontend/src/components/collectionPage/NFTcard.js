@@ -1,7 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useContext } from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom'
+import { PlayerContext } from '../PlayerContext';
 import getContract from '../../getContract';
+
+
 export default function NFTcard({PlayerName, TokenId}) {
     const [cardInfo, setCardInfo] = useState(undefined);
     const [address, setaddress] = useState(undefined);
@@ -9,6 +12,7 @@ export default function NFTcard({PlayerName, TokenId}) {
     const tokenID= TokenId; 
     //const collectionURI = 'https://victorapi.herokuapp.com/api/'+PlayerNAME +'/' + tokenID;
     
+    const {setTokenId} = useContext(PlayerContext);
 
     useEffect(() => {
         const init = async () => {
@@ -36,7 +40,7 @@ export default function NFTcard({PlayerName, TokenId}) {
                 <p class="lead">{"Card Discription: "+ cardInfo.description}</p>
                 <p class="lead">{"Date: "+ cardInfo.birthday}</p>
                 <Link to= "/itemPage">
-                <a href="#" class="btn mr-2"><i class="fas fa-link"></i> View More</a>
+                  <button class = "btn btn-secondary btn-md-2" onClick= {() => setTokenId(tokenID)}> View Collection</button>
                 </Link>
             </div>
           </div>
