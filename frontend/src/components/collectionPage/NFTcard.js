@@ -10,6 +10,7 @@ export default function NFTcard({PlayerName, TokenId}) {
     const [address, setaddress] = useState(undefined);
     const PlayerNAME  = PlayerName;
     const tokenID= TokenId; 
+
     //const collectionURI = 'https://victorapi.herokuapp.com/api/'+PlayerNAME +'/' + tokenID;
     
     const {setTokenId} = useContext(PlayerContext);
@@ -36,11 +37,10 @@ export default function NFTcard({PlayerName, TokenId}) {
             <img src={cardInfo.image} className="img-fluid" alt= "loading"/>
             <div class="card-body">
                 <h4 class="h4 post-title">{"Card Name: "+ cardInfo.name}</h4>
-                <p class="lead">{"Contract Address: "+ address}</p>
                 <p class="lead">{"Card Discription: "+ cardInfo.description}</p>
                 <p class="lead">{"Date: "+ cardInfo.birthday}</p>
                 <Link to= "/itemPage">
-                  <button class = "btn btn-secondary btn-md-2" onClick= {() => setTokenId(tokenID)}> View Collection</button>
+                  <button class = "btn btn-secondary btn-md-2" onClick= {() => setTokenId(tokenID)}>View Card</button>
                 </Link>
             </div>
           </div>

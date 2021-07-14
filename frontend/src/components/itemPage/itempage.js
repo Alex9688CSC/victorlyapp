@@ -6,15 +6,40 @@ import getContract from '../../getContract';
 
 
 export default function Itempage() {
-
+    const [cardInfo, setCardInfo] = useState(undefined);
+    const [address, setaddress] = useState(undefined);
     const {player, tokenId} = useContext(PlayerContext);
-    
+
+    const tokenID= tokenId; 
+
+    const openSeaUrl= "https://testnets.opensea.io/assets/"+ address + "/" + tokenId
+    console.log("player: " + player + "ID: " + tokenId);
+    console.log("card info: "+ cardInfo);
+
+    const temptokenURI= 'https://victorapi.herokuapp.com/api/'+player +'/' + tokenId;
+
+    useEffect(() => {
+        const init = async () => {
+          const { playernft } = await getContract(player);
+          const tokenURI = await playernft.tokenURI(tokenID);
+
+          const { data } = await axios.get(temptokenURI);
+          console.log(data);
+          setCardInfo(data);
+          const addr= await playernft.resolvedAddress;
+          setaddress(addr);
+        };
+        init();
+      },[player,tokenID,temptokenURI]);
 
 
 
     return (
         <div class="container mt-5">
+            
             <div class="shop-product-detail">
+            <br></br>
+            <br></br>
                 <div class="container">
                     <div class="row">
                         <div class="col col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
@@ -30,6 +55,7 @@ export default function Itempage() {
             
                                 <div class="shop-product-detail-thumb">
                                     {/* <img class="main-img" alt="product" src="img/product3.png"> */}
+                                    {/* <img src={cardInfo.image} className="img-fluid" alt= "loading"/> */}
                                 </div>
                             </div>
                         </div>
@@ -37,9 +63,10 @@ export default function Itempage() {
                             <div class="shop-product-detail-content">
                                 <div class="main-content-wrap">
                                     <div class="block-title">
-                                        <a href="#" class="product-category">COFFEE MUGS</a>
-                                        <h2 class="title bold">White Enamel Mug</h2>
-                                        <ul class="rait-stars">
+                                        <a href="#" class="product-category">{player}</a>
+                                        {/* <h2 class="title bold"> {cardInfo.name} </h2> */}
+                                        <h2 class="title bold"> Name </h2>
+                                        {/* <ul class="rait-stars">
                                             <li>
                                                 <i class="fa fa-star star-icon c-primary" aria-hidden="true"></i>
                                             </li>
@@ -56,12 +83,12 @@ export default function Itempage() {
                                             <li>
                                                 <i class="far fa-star star-icon" aria-hidden="true"></i>
                                             </li>
-                                        </ul>
+                                        </ul> */}
                                     </div>
             
-                                    <div class="block-price">
+                                    {/* <div class="block-price">
                                         <div class="product-price">$20</div>
-                                    </div>
+                                    </div> */}
                                 </div>
             
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor labore eter
@@ -70,20 +97,22 @@ export default function Itempage() {
                                     esse cillum dolore.
                                 </p>
             
-                            
-            
-                                <a href="#" class="btn btn-blue btn-md with--icon">
+                                <a href = {openSeaUrl} target="_blank" class="btn btn-secondary btn-md-2">
                                     {/* <svg class="olymp-shopping-bag-icon icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-shopping-bag-icon"></use></svg> */}
                                     <div class="text">
-                                        <span class="title">Add to Cart</span>
+                                        <span class="title"> Purchase </span>
                                     </div>
                                 </a>
-            
-                                
-            
                                 <div class="article-number">
-                                    SKU:<span>ASF55GX</span>
+                                    {"Contract Address: " + address}
                                 </div>
+                                <div class="article-number">
+                                    {"Token ID: " + tokenId}
+                                </div>
+                                <br></br>
+                                <Link to= "/collectionPage">
+                                    <button class = "btn btn-secondary btn-md-2"> Back to Collection</button>
+                                </Link>
                             </div>
                         </div>
                     </div>

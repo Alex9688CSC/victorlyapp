@@ -1,7 +1,6 @@
 import { ethers, Contract } from 'ethers';
 
 export default async function getContract(PlayerNAME) {
-    console.log (PlayerNAME);
     if(window.ethereum) { 
         // connect ethers.js with metamask https://stackoverflow.com/questions/60785630/how-to-connect-ethers-js-with-metamask
         await window.ethereum.enable(); 
@@ -14,7 +13,6 @@ export default async function getContract(PlayerNAME) {
           player.abi,
           signer
         );
-        console.log (playernft.resolvedAddress);
         return ({playernft})
     }
 }
