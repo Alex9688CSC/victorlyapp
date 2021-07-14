@@ -1,13 +1,31 @@
-import React from 'react'
+import React, { useState, useEffect, useContext } from 'react'
+import { PlayerContext } from '../PlayerContext';
+import axios from 'axios';
+
 import thumb1 from './../../images/VictorlyLogo1.png'; 
 import author from'./../../images/victorlyLogo.png'; 
 
-export default function collectionProfile() {
+export default function CollectionProfile() {
+    const {player} = useContext(PlayerContext);
+    const [playerInfo, setplayerInfo] = useState([]);
+    console.log(player);
+    const playerURI= 'https://victorapi.herokuapp.com/api/collections/' + player;
+
+    useEffect(() => {
+        const init = async () => {
+          const {data}  = await axios.get(playerURI);
+          setplayerInfo(data);
+        };
+        init();
+    },[playerURI]);
+
+
+
     return (
         <article class="hentry blog-post single-post single-post-v3">
             <a href="#" class="post-category bg-primary">OLYMPUS NEWS</a>
         
-            <h1 class="post-title">運動員介紹</h1>
+            <h1 class="post-title">{playerInfo.nft_name}</h1>
         
             <div class="author-date">
                 <div class="author-thumb">
