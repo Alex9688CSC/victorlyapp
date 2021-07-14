@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState } from 'react'
 import {Route, BrowserRouter as Router, Switch} from 'react-router-dom'
 import Nav from './components/nav';
 import Footer from './components/footer';
@@ -9,7 +9,6 @@ import Collectionlist from './components/homePage/collectionlist';
 
 //Collection page components
 import Cardlist from './components/collectionPage/cardlist';
-import Profile from './components/collectionPage/profile';
 import ItemPage from './components/itemPage/itempage';
 import CollectionProfile from './components/collectionPage/collectionProfile';
 

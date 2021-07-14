@@ -4,7 +4,7 @@ pragma solidity ^0.8.0;
 import "@openzeppelin/contracts/access/Ownable.sol";
 import '@openzeppelin/contracts/token/ERC721/ERC721.sol';
 
-contract PLAYERTWO is Ownable, ERC721 {
+contract playertwo is Ownable, ERC721 {
   uint public TokenId;
   address public admin;
 
