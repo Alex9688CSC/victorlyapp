@@ -6,7 +6,8 @@ import getContract from '../../getContract';
 
 
 export default function Itempage() {
-    const [playerInfo, setplayerInfo] = useState({name: "loading name", image: "loading image"});
+    const [cardInfo, setCardInfo] 
+    = useState({name: "loading name", image: "loading image", description: "description"});
     const [address, setaddress] = useState(undefined);
     const {player, tokenId} = useContext(PlayerContext);
 
@@ -19,7 +20,7 @@ export default function Itempage() {
           const { playernft } = await getContract(player);
           const tokenURI = await playernft.tokenURI(tokenID);
           const { data } = await axios.get(tokenURI);
-          setplayerInfo(data);
+          setCardInfo(data);
           const addr= await playernft.resolvedAddress;
           setaddress(addr);
         };
@@ -47,7 +48,7 @@ export default function Itempage() {
             
                                 <div class="shop-product-detail-thumb">
                                     {/* <img class="main-img" alt="product" src="img/product3.png"> */}
-                                    <img src={playerInfo.image} className="img-fluid" alt= "loading"/>
+                                    <img src={cardInfo.image} className="img-fluid" alt= "loading"/>
                                 </div>
                             </div>
                         </div>
@@ -56,7 +57,7 @@ export default function Itempage() {
                                 <div class="main-content-wrap">
                                     <div class="block-title">
                                         <h4>{player}</h4>
-                                        <h2 class="title bold"> {playerInfo.name} </h2>
+                                        <h2 class="title bold"> {cardInfo.name} </h2>
                                         {/* <ul class="rait-stars">
                                             <li>
                                                 <i class="fa fa-star star-icon c-primary" aria-hidden="true"></i>
@@ -85,15 +86,10 @@ export default function Itempage() {
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor labore eter
                                     dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
                                     ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit  voluptate velit
-                                    esse cillum dolore.
+                                    esse cillum dolore. 
                                 </p>
-            
-                                <a href = {openSeaUrl} target="_blank" rel="noreferrer" class="btn btn-secondary btn-md-2">
-                                    {/* <svg class="olymp-shopping-bag-icon icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-shopping-bag-icon"></use></svg> */}
-                                    <div class="text">
-                                        <span class="title"> Purchase </span>
-                                    </div>
-                                </a>
+                                <p>{cardInfo.description}</p>
+                                
                                 <div class="article-number">
                                     {"Contract Address: " + address}
                                 </div>
@@ -101,8 +97,14 @@ export default function Itempage() {
                                     {"Token ID: " + tokenId}
                                 </div>
                                 <br></br>
+                                <a href = {openSeaUrl} target="_blank" rel="noreferrer" class="btn btn-secondary btn-md-2">
+                                    {/* <svg class="olymp-shopping-bag-icon icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-shopping-bag-icon"></use></svg> */}
+                                    <div class="text">
+                                        <span class="title"> Purchase Item</span>
+                                    </div>
+                                </a>
                                 <Link to= "/collectionPage">
-                                    <button class = "btn btn-secondary btn-md-2"> Back to Collection</button>
+                                    <button class = "btn btn-secondary ml-5"> Back to Collection</button>
                                 </Link>
                             </div>
                         </div>
