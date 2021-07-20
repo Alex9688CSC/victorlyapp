@@ -7,7 +7,9 @@ export default async function getContract(PlayerNAME) {
         const provider = new ethers.providers.Web3Provider(window.ethereum); 
         const signer = provider.getSigner(); 
         // end
+
         const player= await import (`./contracts/${PlayerNAME}.json`);
+        //const player= await import (`./contracts/Playerone.json`);
         const playernft = new Contract(
           player.networks[window.ethereum.networkVersion].address,
           player.abi,

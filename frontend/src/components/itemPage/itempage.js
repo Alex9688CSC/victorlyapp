@@ -3,17 +3,19 @@ import axios from 'axios';
 import {Link} from 'react-router-dom'
 import { PlayerContext } from '../PlayerContext';
 import getContract from '../../getContract';
-
+import seaport from '../../openSea';
 
 export default function Itempage() {
     const [cardInfo, setCardInfo] 
     = useState({name: "loading name", image: "loading image", description: "description"});
-    const [address, setaddress] = useState(undefined);
+    const [contractaddress, setContractaddress] = useState("0xe757889e8080C119a522f4627d2c151CC3dE9024");
     const {player, tokenId} = useContext(PlayerContext);
 
     const tokenID= tokenId; 
-    const openSeaUrl= "https://testnets.opensea.io/assets/"+ address + "/" + tokenId
+    const openSeaUrl= "https://testnets.opensea.io/assets/"+ contractaddress + "/" + tokenId
     
+    const [balance, setBalance] = useState();
+    const accountAddress= "0x652534BE050D9447FbE6B074348bA5652a0bb076";
 
     useEffect(() => {
         const init = async () => {
@@ -22,11 +24,46 @@ export default function Itempage() {
           const { data } = await axios.get(tokenURI);
           setCardInfo(data);
           const addr= await playernft.resolvedAddress;
-          setaddress(addr);
+          setContractaddress(addr);
+
+          console.log(contractaddress);
+          const asset= {"tokenAddress": contractaddress, "tokenId": tokenId};
+          const balancedata = await seaport.getAssetBalance({
+            accountAddress, // string
+            asset, // Asset
+        })
+        
+        setBalance(balancedata);
+        console.log(balance);
+        const ownsKitty = balance.greaterThan(0)
+        console.log(ownsKitty);
+
         };
         init();
-      },[player,tokenID]);
- 
+      },[player,tokenID,contractaddress,tokenId]);
+
+      
+
+    // const asset = {
+    // tokenAddress: address, // CryptoKitties
+    // tokenId: tokenId, // Token ID
+    // }
+
+    
+    // useEffect(() => {
+    //     const init = async () => {
+    //         console.log("beofre balance data");
+    //         console.log(asset);
+    //         const balancedata = await seaport.getAssetBalance({
+    //             accountAddress, // string
+    //             asset, // Asset
+    //         })
+    //         console.log(balancedata);
+    //         setBalance(balancedata);
+    //     };
+    //     init();
+    //   },[asset]);
+
     return (
         <div class="container mt-5">
             
@@ -91,7 +128,7 @@ export default function Itempage() {
                                 <p>{cardInfo.description}</p>
                                 
                                 <div class="article-number">
-                                    {"Contract Address: " + address}
+                                    {"Contract Address: " + contractaddress}
                                 </div>
                                 <div class="article-number">
                                     {"Token ID: " + tokenId}
