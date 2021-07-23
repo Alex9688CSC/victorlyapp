@@ -6,63 +6,63 @@ import getContract from '../../getContract';
 import seaport from '../../openSea';
 
 export default function Itempage() {
-    const [cardInfo, setCardInfo] 
-    = useState({name: "loading name", image: "loading image", description: "description"});
-    const [contractaddress, setContractaddress] = useState("0xe757889e8080C119a522f4627d2c151CC3dE9024");
-    const {player, tokenId} = useContext(PlayerContext);
-
-    const tokenID= tokenId; 
+    //const {player, tokenId} = useContext(PlayerContext); //for dynamic importing
+    const [tokenInfo, setTokenInfo] 
+    = useState({name: "name", animation_url: "animation", image_url: "image", description: "description"});
+    const [collectionInfo, setcollectionInfo] = useState({name: "Loading Collection Name"})
+    const [traitoneInfo, setTraitoneInfo] = useState({trait_type: "trait type", value: "value", max_value: "max value"});
+    
+    const [contractaddress, setContractaddress] = useState("0x88b48f654c30e99bc2e4a1559b4dcf1ad93fa656");
+    const tokenId= "45749335062038752940674280911685102351036440558945446077565406484643595681793"; 
     const openSeaUrl= "https://testnets.opensea.io/assets/"+ contractaddress + "/" + tokenId
     
-    const [balance, setBalance] = useState();
+    //main net
+    const apiurl = 'https://api.opensea.io/api/v1/asset/0x495f947276749ce646f68ac8c248420045cb7b5e/113408749351555629576827107437318000209516833207260721875583300611684758978561/';
+
+    //test net 
+    //const testneturl= "https://testnets.opensea.io/assets/0x88b48f654c30e99bc2e4a1559b4dcf1ad93fa656/45749335062038752940674280911685102351036440558945446077565406485743107309569"
+    
+    
     const accountAddress= "0x652534BE050D9447FbE6B074348bA5652a0bb076";
 
     useEffect(() => {
         const init = async () => {
-          const { playernft } = await getContract(player);
-          const tokenURI = await playernft.tokenURI(tokenID);
-          const { data } = await axios.get(tokenURI);
-          setCardInfo(data);
-          const addr= await playernft.resolvedAddress;
-          setContractaddress(addr);
+            //fetch token's metadata from opensea with its api
+            const {data}= await axios.get(apiurl);
+            setTokenInfo(data);
+            const {collection}= data;
+            setcollectionInfo(collection);
+            const {traits}= data;
+            setTraitoneInfo(traits[0]);
 
-          console.log(contractaddress);
-          const asset= {"tokenAddress": contractaddress, "tokenId": tokenId};
-          const balancedata = await seaport.getAssetBalance({
-            accountAddress, // string
-            asset, // Asset
-        })
+            console.log(data);
+            console.log(collection);
+            console.log(traits[0])
+
+          //const { playernft } = await getContract(player);
+          //const tokenURI = await playernft.tokenURI(tokenID);
+          //const { data } = await axios.get(tokenURI);
+          //setCardInfo(data);
+          //const addr= await playernft.resolvedAddress;
+          //setContractaddress(addr);
+
+        //   console.log(contractaddress);
+        //   const asset= {"tokenAddress": contractaddress, "tokenId": tokenId};
+        //   const balancedata = await seaport.getAssetBalance({
+        //     accountAddress, // string
+        //     asset, // Asset
+        // })
         
-        setBalance(balancedata);
-        console.log(balance);
-        const ownsKitty = balance.greaterThan(0)
-        console.log(ownsKitty);
+        // setBalance(balancedata);
+        // console.log(balance);
+        // const ownsKitty = balance.greaterThan(0)
+        // console.log(ownsKitty);
 
         };
         init();
-      },[player,tokenID,contractaddress,tokenId]);
+      },[apiurl]);
 
       
-
-    // const asset = {
-    // tokenAddress: address, // CryptoKitties
-    // tokenId: tokenId, // Token ID
-    // }
-
-    
-    // useEffect(() => {
-    //     const init = async () => {
-    //         console.log("beofre balance data");
-    //         console.log(asset);
-    //         const balancedata = await seaport.getAssetBalance({
-    //             accountAddress, // string
-    //             asset, // Asset
-    //         })
-    //         console.log(balancedata);
-    //         setBalance(balancedata);
-    //     };
-    //     init();
-    //   },[asset]);
 
     return (
         <div class="container mt-5">
@@ -83,9 +83,9 @@ export default function Itempage() {
                                     </a>
                                 </div> */}
             
-                                <div class="shop-product-detail-thumb">
-                                    {/* <img class="main-img" alt="product" src="img/product3.png"> */}
-                                    <img src={cardInfo.image} className="img-fluid" alt= "loading"/>
+                                <div> 
+                                    {/* <img src={tokenInfo.image_url} width="500" height="550" alt= "loading"/> */}
+                                    <video controls autostart autoPlay src={tokenInfo.animation_url} type="video/mp4" width="500" height="550"/>
                                 </div>
                             </div>
                         </div>
@@ -93,40 +93,16 @@ export default function Itempage() {
                             <div class="shop-product-detail-content">
                                 <div class="main-content-wrap">
                                     <div class="block-title">
-                                        <h4>{player}</h4>
-                                        <h2 class="title bold"> {cardInfo.name} </h2>
-                                        {/* <ul class="rait-stars">
-                                            <li>
-                                                <i class="fa fa-star star-icon c-primary" aria-hidden="true"></i>
-                                            </li>
-                                            <li>
-                                                <i class="fa fa-star star-icon c-primary" aria-hidden="true"></i>
-                                            </li>
-            
-                                            <li>
-                                                <i class="fa fa-star star-icon c-primary" aria-hidden="true"></i>
-                                            </li>
-                                            <li>
-                                                <i class="fa fa-star star-icon c-primary" aria-hidden="true"></i>
-                                            </li>
-                                            <li>
-                                                <i class="far fa-star star-icon" aria-hidden="true"></i>
-                                            </li>
-                                        </ul> */}
+                                        <h4>{collectionInfo.name}</h4>
+                                        <h2 class="title bold"> {tokenInfo.name} </h2>
                                     </div>
-            
-                                    {/* <div class="block-price">
-                                        <div class="product-price">$20</div>
-                                    </div> */}
                                 </div>
             
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor labore eter
-                                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-                                    ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit  voluptate velit
-                                    esse cillum dolore. 
-                                </p>
-                                <p>{cardInfo.description}</p>
+                                <p>{tokenInfo.description}</p>
                                 
+                                <div class="article-number">
+                                    {traitoneInfo.trait_type + ": " + traitoneInfo.value + ": " + traitoneInfo.max_value}
+                                </div>
                                 <div class="article-number">
                                     {"Contract Address: " + contractaddress}
                                 </div>
@@ -135,7 +111,6 @@ export default function Itempage() {
                                 </div>
                                 <br></br>
                                 <a href = {openSeaUrl} target="_blank" rel="noreferrer" class="btn btn-secondary btn-md-2">
-                                    {/* <svg class="olymp-shopping-bag-icon icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-shopping-bag-icon"></use></svg> */}
                                     <div class="text">
                                         <span class="title"> Purchase Item</span>
                                     </div>
