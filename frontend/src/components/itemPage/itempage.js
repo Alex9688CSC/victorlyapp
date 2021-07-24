@@ -36,8 +36,7 @@ export default function Itempage() {
             setTraitoneInfo(traits[0]);
 
             console.log(data);
-            console.log(collection);
-            console.log(traits[0])
+            
 
           //const { playernft } = await getContract(player);
           //const tokenURI = await playernft.tokenURI(tokenID);
@@ -100,9 +99,9 @@ export default function Itempage() {
             
                                 <p>{tokenInfo.description}</p>
                                 
-                                <div class="article-number">
-                                    {traitoneInfo.trait_type + ": " + traitoneInfo.value + ": " + traitoneInfo.max_value}
-                                </div>
+                                <p>
+                                    {traitoneInfo.trait_type + ": " + traitoneInfo.value + "/ " + traitoneInfo.max_value}
+                                </p>
                                 <div class="article-number">
                                     {"Contract Address: " + contractaddress}
                                 </div>

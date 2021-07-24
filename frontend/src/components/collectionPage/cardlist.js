@@ -4,27 +4,41 @@ import { PlayerContext } from '../PlayerContext';
 import axios from 'axios';
 
 export default function Cardlist() {
-    const {player} = useContext(PlayerContext);
-    const [playerInfo, setplayerInfo] = useState([]);
-    const playerURI= 'https://victorapi.herokuapp.com/api/' + player;
+    //const {player} = useContext(PlayerContext);
+    //const [playerInfo, setplayerInfo] = useState([]);
+    //const playerURI= 'https://victorapi.herokuapp.com/api/' + player;
+    //temp contract address and token ID 
+    const contractadd= "0x495f947276749ce646f68ac8c248420045cb7b5e"
+    const tokenList= ["45749335062038752940674280911685102351036440558945446077565406484643595681793", "45749335062038752940674280911685102351036440558945446077565406485743107309569"]
+    
+    // useEffect(() => {
+    //     const init = async () => {
+    //     //   const {data}  = await axios.get(playerURI);
+    //     //   setplayerInfo(data);
+    //     };
+    //     init();
+    // });
 
-    useEffect(() => {
-        const init = async () => {
-          const {data}  = await axios.get(playerURI);
-          setplayerInfo(data);
-        };
-        init();
-    },[playerURI]);
 
-    //loop through the object to create the list
-    const cardlist = Object.keys(playerInfo).map(key => {
+
+    const cardlist = tokenList.map((tokenId) => {
         return <div>
             <br></br>
-            <NFTcard PlayerName= {player} TokenId= {key}/>
+            <NFTcard ContractAdd= {contractadd} TokenId= {tokenId}/>
         </div>
         
         }
     )
+
+    //loop through the object to create the list
+    // const cardlist = Object.keys(playerInfo).map(key => {
+    //     return <div>
+    //         <br></br>
+    //         <NFTcard ContractAdd= {player} TokenId= {key}/>
+    //     </div>
+        
+    //     }
+    // )
 
     return (
         <div>
@@ -36,12 +50,5 @@ export default function Cardlist() {
             {cardlist}
             <br></br>
         </div>
-
-        // <div class="container mx-auto mt-4">
-        //     <div class="row">
-        //         {cardlist}
-        //     </div>
-        //     <br></br>
-        // </div>
     )
 }

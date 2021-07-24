@@ -5,41 +5,51 @@ import { PlayerContext } from '../PlayerContext';
 import getContract from '../../getContract';
 
 
-export default function NFTcard({PlayerName, TokenId}) {
-    const [cardInfo, setCardInfo] = useState(undefined);
-    const [address, setaddress] = useState(undefined);
-    const PlayerNAME  = PlayerName;
-    const tokenID= TokenId; 
-
+export default function NFTcard({ContractAdd, TokenId}) {
+    //const [cardInfo, setCardInfo] = useState(undefined);
+    //const [address, setaddress] = useState(undefined);
+    //const PlayerNAME  = ContractAdd;
+    //const tokenID= TokenId; 
     //const collectionURI = 'https://victorapi.herokuapp.com/api/'+PlayerNAME +'/' + tokenID;
-    
     const {setTokenId} = useContext(PlayerContext);
 
+    console.log(ContractAdd);
+    console.log(TokenId);
+
+    const [tokenInfo, setTokenInfo] 
+    = useState({name: "name", image_url: "image"});
+
+   
+    
+    //console.log(apiurl)
     useEffect(() => {
         const init = async () => {
-          const { playernft } = await getContract(PlayerNAME);
-          const tokenURI = await playernft.tokenURI(tokenID);
-          const addr= await playernft.resolvedAddress;
-          console.log(addr);
-          setaddress(addr);
-          const { data } = await axios.get(tokenURI);
-          setCardInfo(data);
+          const apiurl = "https://api.opensea.io/api/v1/asset/"+ ContractAdd +"/" + TokenId;
+          const {data}= await axios.get(apiurl);
+          setTokenInfo(data);
+          console.log(data);
+          // const { playernft } = await getContract(PlayerNAME);
+          // const tokenURI = await playernft.tokenURI(tokenID);
+          // const addr= await playernft.resolvedAddress;
+          // console.log(addr);
+          // setaddress(addr);
+          // const { data } = await axios.get(tokenURI);
+          // setCardInfo(data);
         };
         init();
-      },[PlayerNAME,tokenID]);
-      if(typeof cardInfo === 'undefined') {
+      },[ContractAdd, TokenId]);
+      if(typeof tokenInfo === 'undefined') {
         return 'card loading';
       }
 
     return (
 
           <div class="card">
-            <img src={cardInfo.image} className="img-fluid" alt= "loading"/>
+            <img src={tokenInfo.image_url} className="img-fluid" alt= "loading"/>
             <div class="card-body">
-                <h4 class="h4 post-title">{"Card Name: "+ cardInfo.name}</h4>
-                <p class="lead">{"Date: "+ cardInfo.birthday}</p>
+                <h4 class="h4 post-title">{"Card Name: "+ tokenInfo.name}</h4>
                 <Link to= "/itemPage">
-                  <button class = "btn btn-secondary btn-md-2" onClick= {() => setTokenId(tokenID)}>View Card</button>
+                  <button class = "btn btn-secondary btn-md-2" onClick= {() => setTokenId(TokenId)}>View Card</button>
                 </Link>
             </div>
           </div>

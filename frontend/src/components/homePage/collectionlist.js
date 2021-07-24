@@ -7,6 +7,7 @@ export default function Collectionlist() {
     const [collection, setCollection] = useState([])
     const collectionsURI= 'https://victorapi.herokuapp.com/api/collections';
 
+    
     useEffect(() => {
         const init = async () => {
           const { data } = await axios.get(collectionsURI);
