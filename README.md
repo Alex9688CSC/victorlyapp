@@ -7,3 +7,6 @@ The NFTs Marketplace contains three major sections: Backend, Frontend, and NFT c
 - Frontend: the frontend NFT marketplace was developed with React.js and web3.js with integrated OpenSea SDK using JavaScript. 
 - Contracts: NFTs contracts were created with ERC 721 standard supported by Openzeppelin, supported by the Truffle.js  development environment.
 
+
+The project has two versions, branch main and Jul-19, with different implementations of OpenSeaSDK. The final version is integrated into the Victor.ly Github. 
+
